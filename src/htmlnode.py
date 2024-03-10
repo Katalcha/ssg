@@ -5,12 +5,17 @@ class HTMLNode():
         self.children = children
         self.props = props
 
+    # to be overwritten by child classes
     def to_html(self):
-        raise NotImplementedError()
+        raise NotImplementedError("to_html method should be overwritten by child classes")
     
     def props_to_html(self):
-        if self.props is not None:
-            return f' '
+        if self.props is None:
+            return ""
+        props_for_html = ""
+        for prop in self.props:
+            props_for_html += f' {prop}="{self.props[prop]}"'
+        return props_for_html
     
     def __repr__(self):
-        pass
+        return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
