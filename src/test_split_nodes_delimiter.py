@@ -21,62 +21,57 @@ md_code = "`"
 class TestSplitNodesDelimiter(unittest.TestCase):
     def test_delimiter_bold(self):
         node = TextNode(bolded_text, text_type_text)
-        splitted_node = split_nodes_delimiter([node], md_bold, text_type_bold)
-        self.assertListEqual(
-            [
-                TextNode("This is text with a ", text_type_text), 
-                TextNode("bolded", text_type_bold), 
-                TextNode(" word", text_type_text)
-            ], splitted_node
-        )
+        test = split_nodes_delimiter([node], md_bold, text_type_bold)
+        expected = [
+            TextNode("This is text with a ", text_type_text), 
+            TextNode("bolded", text_type_bold), 
+            TextNode(" word", text_type_text)
+        ]
+        self.assertListEqual(test, expected)
     
     def test_delimiter_bold2(self):
         node = TextNode(bolded_text2, text_type_text)
-        splitted_node = split_nodes_delimiter([node], md_bold, text_type_bold)
-        self.assertListEqual(
-            [
-                TextNode("This is text with a ", text_type_text),
-                TextNode("bolded", text_type_bold),
-                TextNode(" word and another ", text_type_text),
-                TextNode("bolded", text_type_bold),
-                TextNode(" word", text_type_text)
-            ], splitted_node
-        )
+        test = split_nodes_delimiter([node], md_bold, text_type_bold)
+        expected = [
+            TextNode("This is text with a ", text_type_text),
+            TextNode("bolded", text_type_bold),
+            TextNode(" word and another ", text_type_text),
+            TextNode("bolded", text_type_bold),
+            TextNode(" word", text_type_text)
+        ]
+        self.assertListEqual(test, expected)
 
     def test_delimiter_bold3(self):
         node = TextNode(bolded_text3, text_type_text)
-        splitted_node = split_nodes_delimiter([node], md_bold, text_type_bold)
-        self.assertListEqual(
-            [
-                TextNode("This is text with multiple ", text_type_text),
-                TextNode("bolded words", text_type_bold),
-                TextNode(" and another ", text_type_text),
-                TextNode("bolded", text_type_bold),
-                TextNode(" word", text_type_text)
-            ], splitted_node
-        )
+        test = split_nodes_delimiter([node], md_bold, text_type_bold)
+        expected = [
+            TextNode("This is text with multiple ", text_type_text),
+            TextNode("bolded words", text_type_bold),
+            TextNode(" and another ", text_type_text),
+            TextNode("bolded", text_type_bold),
+            TextNode(" word", text_type_text)
+        ]
+        self.assertListEqual(test, expected)
     
     def test_delimiter_italic(self):
         node = TextNode(italic_text, text_type_text)
-        splitted_node = split_nodes_delimiter([node], md_italic, text_type_italic)
-        self.assertListEqual(
-            [
-                TextNode("This is text with an ", text_type_text),
-                TextNode("italic", text_type_italic),
-                TextNode(" word", text_type_text)
-            ], splitted_node
-        )
+        test = split_nodes_delimiter([node], md_italic, text_type_italic)
+        expected = [
+            TextNode("This is text with an ", text_type_text),
+            TextNode("italic", text_type_italic),
+            TextNode(" word", text_type_text)
+        ]
+        self.assertListEqual(test, expected)
     
     def test_delimiter_code(self):
         node = TextNode(code_text, text_type_text)
-        splitted_node = split_nodes_delimiter([node], md_code, text_type_code)
-        self.assertListEqual(
-            [
-                TextNode("This is text with a ", text_type_text),
-                TextNode("code", text_type_code),
-                TextNode(" word", text_type_text)
-            ], splitted_node
-        )
+        test = split_nodes_delimiter([node], md_code, text_type_code)
+        expected = [
+            TextNode("This is text with a ", text_type_text),
+            TextNode("code", text_type_code),
+            TextNode(" word", text_type_text)
+        ]
+        self.assertListEqual(test, expected)
 
 if __name__ == "__main__":
     unittest.main()
