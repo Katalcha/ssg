@@ -1,6 +1,6 @@
 from htmlnodes import ParentNode
-from text_to_textnodes import text_to_textnodes
-from textnode_to_htmlnode import text_node_to_html_node
+from md_lines_to_text_nodes import text_to_textnodes
+from textnode import text_node_to_html_node
 
 block_type_paragraph = "paragraph"
 block_type_heading = "heading"
